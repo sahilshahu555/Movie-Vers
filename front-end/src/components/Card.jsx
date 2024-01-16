@@ -2,11 +2,14 @@ import React from 'react'
 
 const Card = ({elm}) => {
   return (
-    <div className='flex flex-col m-10 text-red-300'>
+    <div className='flex flex-col m-8  justify-between  items-center 
+    rounded-xl
+    text-red-300 border'>
      
-      <img src={elm.Poster} alt="" width={"200px"}  />
-      <h1>{elm.Title}</h1>
-
+      <img src={elm.Poster} alt=""  className='w-auto rounded-xl' />
+      <h2>{elm.Title}</h2>
+      <p>{elm.Year}</p>
+      
     </div>
   )
 }

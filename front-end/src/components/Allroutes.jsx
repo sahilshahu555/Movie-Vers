@@ -6,7 +6,7 @@ import Signup from '../pages/Signup'
 import {Routes,Route} from "react-router-dom"
 const Allroutes = () => {
   return (
-    <Routes>
+    <Routes >
       <Route path="/" element={<Home/>} />
       <Route path="/addmovie" element={<AddMovie/>} />
       <Route path="/login" element={<Login/>} />

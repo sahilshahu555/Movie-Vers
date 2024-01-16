@@ -6,9 +6,8 @@ require("dotenv").config();
 
 const {connection}=require("./database/db");
 const {UserModel}=require("./models/user.model");
-const {BlogModel}=require("./models/blog.model");
-const {auth}=require("./middlewares/auth");
-const {blogRouter}=require("./routes/routes")
+const {movieRouter} = require("./routes/routes");
+
 
 
 const app=express();
@@ -56,7 +55,7 @@ app.post("/login",async(req,res)=>{
     }
 })
 
-app.use("/movies",  blogRouter)
+app.use("/movies",movieRouter)
 
 
 app.listen(8000,()=>{

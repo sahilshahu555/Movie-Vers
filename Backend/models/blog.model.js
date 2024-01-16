@@ -7,6 +7,6 @@ const blogSchema= new mongoose.Schema({
     user_name:{type:String}
 })
 
-const BlogModel= mongoose.model("Movie",blogSchema)
+const movieModel= mongoose.model("Movie",blogSchema)
 
-module.exports={BlogModel}
+module.exports={movieModel}
