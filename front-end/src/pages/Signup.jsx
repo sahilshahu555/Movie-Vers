@@ -54,7 +54,7 @@ const Signup = () => {
             className='text-center'
       >
       <form onSubmit={handleSubmit}
-      className='text-center border w-80 flex justify-center items-center flex-col p-5 m-5 gap-2 bg-slate-300 rounded-2xl'
+      className='text-center border w-80 flex justify-center items-center flex-col p-5 m-5 gap-2 bg-slate-300 rounded-2xl shadow-violet-400/100 ...'
       >
         <h1 className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-2 px-14 m-2 rounded' >SignUp Form </h1>
        <input type="text" name="name" value={user.name} onChange={handleChange} placeholder='Enter Your Name' className='text-center p-1'/>
@@ -67,7 +67,7 @@ const Signup = () => {
 
        <input type="number" name="phone_number" value={user.phone_number} onChange={handleChange} placeholder='Enter Your Phone number' className='text-center p-1'/>
 
-       <input type="submit" className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-1 px-5 m-2 rounded' />
+       <input type="submit" className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-1 px-5 m-2 rounded-xl cursor-pointer ... hover:text-black' />
        
       </form>
     </div>

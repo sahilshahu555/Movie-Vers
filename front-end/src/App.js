@@ -18,7 +18,7 @@ function App() {
       <h1 className=" text-center rounded bg-gradient-to-r from-violet-500 to-fuchsia-500 p-2 w-48  m-auto text-slate-300 text-2xl font-medium  hover:text-slate-700 ">
               Movie Vers
             </h1>
-            
+
       <Allroutes />
 
       </div>

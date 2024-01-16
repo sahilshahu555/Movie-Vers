@@ -1,16 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Card = ({elm}) => {
+const Card = ({elm,i}) => {
   return (
-    <div className='flex flex-col m-8  justify-between  items-center 
-    rounded-xl
-    text-red-300 border'>
+    <Link to={`/singlemovie/${i+1}`}>
+    <div className='  m-10  flex flex-col justify-between  items-center 
+    rounded-xl gap-5  
+    text-white curser-pointer ...  shadow-lg shadow-violet-400/100 ... '>
      
-      <img src={elm.Poster} alt=""  className='w-auto rounded-xl' />
-      <h2>{elm.Title}</h2>
+      <img src={elm.Poster} alt=""  className=' rounded-xl   ' />
+      <h2  className='lg:text-l'>{elm.Title}</h2>
       <p>{elm.Year}</p>
       
     </div>
+    </Link>
   )
 }
 

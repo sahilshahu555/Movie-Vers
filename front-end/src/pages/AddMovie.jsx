@@ -37,10 +37,10 @@ const AddMovie = () => {
      style={{display:"flex",justifyContent:"center",
              alignItems:"center", width:"100%"
             }} 
-            className='text-center'
+            className='text-center  '
       >
       <form onSubmit={handleSubmit}
-      className='text-center border w-80 flex justify-center items-center flex-col p-10 m-5 gap-3 bg-slate-300 rounded-2xl'
+      className='text-center border w-80 flex justify-center items-center flex-col p-10 m-5 gap-3 bg-slate-300 rounded-2xl shadow-violet-400/100 ...'
       >
 
        <h1 className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-2 px-14 m-2 rounded' > Movie Details </h1> 
@@ -53,7 +53,7 @@ const AddMovie = () => {
        
 
 
-       <input type="submit" className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-1 px-5 m-2 rounded' />
+       <input type="submit" className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-1 px-5 m-2 rounded-xl hover:text-black cursor-pointer ...  ' />
        
       </form>
     </div>
