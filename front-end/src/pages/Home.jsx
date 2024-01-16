@@ -23,7 +23,9 @@ useEffect(()=>{
 },[])
 console.log(data)
   return (
-    <div className='grid grid-cols-4 gap-10 p-10'>
+    <div className='grid  lg:grid-cols-4
+    md:grid-cols-3
+    grid-cols-2 gap-10 p-10'>
      {data?.map((elm,i)=><Card elm={elm} key={i}/>)}
     </div>
   )
