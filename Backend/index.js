@@ -56,9 +56,9 @@ app.post("/login",async(req,res)=>{
     }
 })
 
-app.use("/blogs", auth, blogRouter)
+app.use("/movies",  blogRouter)
 
 
-app.listen(3000,()=>{
+app.listen(8000,()=>{
      connection.then(()=>{console.log("connected to db")}).catch((err)=>{console.log(err)})
 })
