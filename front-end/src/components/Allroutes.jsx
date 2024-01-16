@@ -4,7 +4,9 @@ import AddMovie from '../pages/AddMovie'
 import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 import {Routes,Route} from "react-router-dom"
+import PrivateRoute from './PrivateRoute'
 const Allroutes = () => {
+  
   return (
     <Routes >
       <Route path="/" element={<Home/>} />

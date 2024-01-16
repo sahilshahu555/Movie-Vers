@@ -29,7 +29,7 @@ const AddMovie = () => {
         .catch((err)=>{console.log(err)})
     }
 
-    
+    console.log(user)
 
   return (
        
@@ -40,12 +40,10 @@ const AddMovie = () => {
             className='text-center'
       >
       <form onSubmit={handleSubmit}
-      className='text-center'
-       style={{display:"flex",justifyContent:"center",
-       alignItems:"center",flexDirection:"column",
-       width:"120%",margin:"20px",gap:"10px"
-      }}
+      className='text-center border w-80 flex justify-center items-center flex-col p-10 m-5 gap-3 bg-slate-300 rounded-2xl'
       >
+
+       <h1 className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-2 px-14 m-2 rounded' > Movie Details </h1> 
 
        <input type="text" name="Title" value={user.Title} onChange={handleChange} placeholder='Enter Movie Title' className='text-center p-1'/>
 

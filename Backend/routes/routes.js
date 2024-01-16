@@ -12,16 +12,15 @@ movieRouter.get("/", async (req, res) => {
 // POST METHOD
 movieRouter.post("/create",async(req,res)=>{
     try {
-        const {title,description}=req.body;
+        const {Title,Poster,Year}=req.body;
         const id=req.user_id
         const user=await UserModel.findOne({_id:id})
         await movieModel.create({
-            title,
-            description,
-            user_id: user._id,
-            user_name:user.name
+            Title,
+            Poster,
+            Year
         })
-        res.send({msg:"blog created"})
+        res.send({msg:"Movie created"})
     } catch (error) {
         console.log(error)
     }

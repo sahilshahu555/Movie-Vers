@@ -1,16 +1,24 @@
-import React ,{useState}from 'react'
-
+import React ,{useContext, useState}from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
+import { MyContext } from '../components/AuthContextProvider';
 const Login = () => {
+    const navigate=useNavigate()
+    const{authState,LoginUser}=useContext(MyContext)
+
     const [user,setUser]=useState({
         email:"",
         password:"",
     })
+    const [flag,setFlag]=useState(false);
     const handleChange=(e)=>{
        setUser({...user,[e.target.name]:e.target.value})
     }
     const handleSubmit=(e)=>{
         e.preventDefault()
-       
+       if(user.email=== ""){
+        alert("Invalid Credentials")
+        return;
+    }
         
         fetch("http://localhost:8000/login",{
             method:"POST",
@@ -19,11 +27,18 @@ const Login = () => {
         })
         .then((res)=> res.json())
         .then((res)=>{console.log(res)
-            localStorage.setItem("token",res.token)})
-        .catch((err)=>{console.log(err)})
+            localStorage.setItem("token",res.token)
+            setFlag(true) 
+            LoginUser("Success")
+        })
+        .catch((err)=>{setFlag(false) })
     }
 
-    
+    console.log(flag)
+
+     if(flag){navigate("/")}
+    // if(authState.isAuth){ return <Navigate to="/"/>}
+
 
   return (
        
@@ -31,17 +46,14 @@ const Login = () => {
      style={{display:"flex",justifyContent:"center",
              alignItems:"center", width:"100%"
             }} 
-            className='text-center '
+            className='text-center mt-10  '
       >
+        
       <form onSubmit={handleSubmit}
-      className='text-center'
-       style={{display:"flex",justifyContent:"center",
-       alignItems:"center",flexDirection:"column",
-       width:"120%",margin:"20px",gap:"10px"
-      }}
+      className='text-center border w-80 flex justify-center items-center flex-col p-10 m-5 gap-3 bg-slate-300 rounded-2xl'
       >
 
-   
+       <h1 className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-2 px-14 m-2 rounded' >Login Form </h1>
 
        <input type="text" name="email" value={user.email} onChange={handleChange} placeholder='Enter Your Email' className='text-center p-1' />
 

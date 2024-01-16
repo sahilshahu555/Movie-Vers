@@ -1,6 +1,8 @@
 import React ,{useState}from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    const navigate=useNavigate()
     const [user,setUser]=useState({
         name:"",
         email:"",
@@ -8,6 +10,8 @@ const Signup = () => {
         age:"",
         phone_number:""
     })
+    const [flag,setFlag]=useState(false);
+
     const handleChange=(e)=>{
        setUser({...user,[e.target.name]:e.target.value})
     }
@@ -20,6 +24,11 @@ const Signup = () => {
             age:Number(user.age),
             phone_number:Number(user.phone_number)
         }
+
+        if(user.email=== "" || user.name=== "" ){
+            alert("Invalid Credentials")
+            return;
+        }
         
         fetch("http://localhost:8000/signup",{
             method:"POST",
@@ -27,12 +36,15 @@ const Signup = () => {
             body: JSON.stringify(newUser)
         })
         .then((res)=> res.json())
-        .then((res)=>console.log(res))
-        .catch((err)=>{console.log(err)})
+        .then((res)=>{console.log(res)
+              setFlag(true) 
+            }
+        )
+        .catch((err)=>{setFlag(false)})
     }
 
-    
-
+    console.log(flag)
+    if(flag){navigate("/login")}
   return (
        
      <div  
@@ -42,13 +54,9 @@ const Signup = () => {
             className='text-center'
       >
       <form onSubmit={handleSubmit}
-      className='text-center'
-       style={{display:"flex",justifyContent:"center",
-       alignItems:"center",flexDirection:"column",
-       width:"120%",margin:"20px",gap:"10px"
-      }}
+      className='text-center border w-80 flex justify-center items-center flex-col p-5 m-5 gap-2 bg-slate-300 rounded-2xl'
       >
-
+        <h1 className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-2 px-14 m-2 rounded' >SignUp Form </h1>
        <input type="text" name="name" value={user.name} onChange={handleChange} placeholder='Enter Your Name' className='text-center p-1'/>
 
        <input type="text" name="email" value={user.email} onChange={handleChange} placeholder='Enter Your Email' className='text-center p-1'/>
