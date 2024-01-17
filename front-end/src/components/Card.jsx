@@ -8,7 +8,7 @@ const Card = ({elm,i}) => {
     rounded-xl gap-5  
     text-white curser-pointer ...  shadow-lg shadow-violet-400/100 ... '>
      
-      <img src={elm.Poster} alt=""  className=' rounded-xl   ' />
+      <img src={elm.Poster} alt=""  className=' rounded-xl  h-60 ' />
       <h2  className='lg:text-l'>{elm.Title}</h2>
       <p>{elm.Year}</p>
       

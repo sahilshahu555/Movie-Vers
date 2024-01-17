@@ -5,7 +5,7 @@ const auth=(req,res,next)=>{
    const token=req.headers.auth?.split(" ")[1];
 if(!token){res.send({msg:"please login first"})
 }else{
-    jwt.verify(token,process.env.SECRET_KEY,
+    jwt.verify(token,"sahil",
         (err,decoded)=>{
         if(err){ res.send({msg:"Please Login"})
         }else{

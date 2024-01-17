@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
+
 
 const SingleMovie = () => {
+  const navigate=useNavigate()
   const {id}=useParams()
-  const [data, setData] = useState([]);
+  const [data1, setData1] = useState([]);
   const [load, setLoad] = useState(false);
-
+  const [flag,setFlag]=useState(false);
+ 
  
 
   const getMovie=()=>{
     
     setLoad(true);
    
-   fetch(`http://localhost:8000/movies/`,{
+   fetch(`https://moviesbackend-sezi.onrender.com/movies/`,{
     method:"GET",
       headers:{
           "Content-Type": "application/json",
@@ -20,7 +23,7 @@ const SingleMovie = () => {
       }
    }).then((res)=> res.json())
      .then((res)=>{
-       setData(res.movies)
+       setData1(res.movies)
        setLoad(false)
       }
    )
@@ -29,13 +32,25 @@ const SingleMovie = () => {
     setLoad(false)
   })
   }
+
+
+
 useEffect(()=>{
   getMovie()
 },[])
-let newMovie=data?.filter((elm)=>elm.id===+id)
+let newMovie=data1?.filter((elm)=>elm.id===+id)
 console.log(newMovie)
 let newData=newMovie[0]
 
+
+const deleteMovie=(e,id)=>{
+  let newMovie1=data1?.filter((elm)=>elm.id!==+id)
+ 
+}
+
+console.log(flag)
+
+if(flag){navigate("/")}
   return (
     <div className='text-white'>
       {load?(
@@ -46,16 +61,23 @@ let newData=newMovie[0]
     </svg>
     <h2 className="text-white text-center">Loading...</h2>
 </div>
-):( <div className='flex justify-around items-center gap-8 p-5  border rounded-xl
- mx-20 mt-4 shadow-lg shadow-violet-400/100 ... bg-slate-300 text-black
+):( <div className='flex sm:flex-col lg:flex-row flex-wrap justify-around items-center gap-8 p-5  border rounded-xl  
+ mx-20 my-6 shadow-lg shadow-violet-400/100 ... bg-slate-300 text-black
 '>
-      <div> <img src={newMovie[0]?.Poster} alt="" className='w-52' /></div>
-      <div className='flex flex-col justify-around items-center gap-10' > 
+      <div> <img src={newMovie[0]?.Poster} alt="" className='w-72 rounded-xl shadow-lg shadow-violet-400/100 ...' /></div>
+      <div className='flex flex-col justify-around items-center gap-3 bg-black text-white p-2 rounded-xl shadow-lg shadow-violet-400/100 ...'  > 
       <h1 className='text-white  m-auto bg-gradient-to-r from-violet-500 to-fuchsia-500 py-2 px-20 mt-2  rounded'>{newMovie[0]?.Title}</h1>
+      <div className='flex flex-col justify-around items-start gap-10 bg-black text-white p-2 rounded-xl'>
      <p>Actors : {newMovie[0]?.Actors}</p>
+     <p>Genre : {newMovie[0]?.Genre} </p>
      <p>Language : {newMovie[0]?.Language} </p>
-     <div className='flex justify-around items-center'>
-     <button className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-1 px-5 m-2 rounded-xl cursor-pointer ... hover:text-black'>Delete</button>
+     <p>Director : {newMovie[0]?.Director}</p>
+     <p>Awards : {newMovie[0]?.Awards}</p>
+     </div>
+     <div className='flex justify-around items-center m-auto w-46'>
+     <button className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-1 px-5 m-2 rounded-xl cursor-pointer ... hover:text-black'
+     onClick={(e)=>{deleteMovie(e,newMovie[0]?.id)}}
+     >Delete</button>
      <button className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-1 px-8 m-2 rounded-xl cursor-pointer ... hover:text-black'>Edit</button>
      </div>
       </div>

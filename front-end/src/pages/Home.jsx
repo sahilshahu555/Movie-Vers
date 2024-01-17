@@ -1,10 +1,13 @@
-import React ,{useState,useEffect}from 'react'
+import React ,{useState,useEffect, useContext}from 'react'
 import Card from '../components/Card'
+import { MyContext } from '../components/AuthContextProvider';
+
 
 
 
 const Home = () => {
-    const [data, setData] = useState([]);
+    const [data1, setData1] = useState([]);
+    const{data,setData}=useContext(MyContext)
     const [load, setLoad] = useState(false);
 
    
@@ -12,7 +15,7 @@ const Home = () => {
     const getMovies=()=>{
       setLoad(true);
      
-     fetch("http://localhost:8000/movies/",{
+     fetch("https://moviesbackend-sezi.onrender.com/movies/",{
       method:"GET",
         headers:{
             "Content-Type": "application/json",
@@ -43,9 +46,8 @@ useEffect(()=>{
     </svg>
     <h2 className="text-white text-center">Loading...</h2>
 </div>
-):( <div className='grid  lg:grid-cols-4
-    md:grid-cols-3
-    grid-cols-2 gap-10 p-10'>
+):( <div className='grid  lg:grid-cols-4 md:grid-cols-3
+    grid-cols-2 gap-2 p-5 '>
       
      {data?.map((elm,i)=><Card elm={elm} i={i} key={i}/>)}
     </div>)}

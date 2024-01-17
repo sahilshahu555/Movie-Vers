@@ -12,13 +12,13 @@ movieRouter.get("/", async (req, res) => {
 // POST METHOD
 movieRouter.post("/create",async(req,res)=>{
     try {
-        const {Title,Poster,Year}=req.body;
-        const id=req.user_id
-        const user=await UserModel.findOne({_id:id})
+        const {Title,Poster,Year,id}=req.body;
+       
         await movieModel.create({
             Title,
             Poster,
-            Year
+            Year,
+            id
         })
         res.send({msg:"Movie created"})
     } catch (error) {
@@ -27,29 +27,29 @@ movieRouter.post("/create",async(req,res)=>{
 })
 
 // Put Method
-movieRouter.put("/edit/:blogId",async(req,res)=>{
-    const blogId=req.params.blogId;
+movieRouter.put("/edit/:movieID",async(req,res)=>{
+    const movieID=req.params.movieID;
     const payload=req.body;
     const id=req.user_id;
     
-    const blog = await movieModel.findOne({_id : blogId})
-    if(id != blog.user_id){ res.send({mes:"You are Unauthorized"})
+    const movie = await movieModel.findOne({_id : movieID})
+    if(id != movie.user_id){ res.send({mes:"You are Unauthorized"})
    }else{
-        await movieModel.findByIdAndUpdate(blogId,payload)
+        await movieModel.findByIdAndUpdate(movieID,payload)
         return  res.status(201).json({"message":"Updated successfully!"});
     }
 })
 
 // delete method
-movieRouter.delete("/delete/:blogId",async(req,res)=>{
-    const blogId=req.params.blogId;
-    const id=req.user_id;
+movieRouter.delete("/delete/:movieID",async(req,res)=>{
+    const movieID=req.params.movieID;
+    
 
-    const blog = await movieModel.findOne({_id : blogId})
+    const movie = await movieModel.findOne({id:movieID})
 
-    if(id != blog.user_id){ res.send({mes:"You are Unauthorized to delete blog"})
+    if(id != movie.id){ res.send({mes:"You are Unauthorized to delete movie"})
    }else{
-        await movieModel.findByIdAndDelete(blogId)
+        await movieModel.findByIdAndDelete(movieID)
         return  res.status(201).json({"message":"Deleted successfully!"});
     }
 })

@@ -30,7 +30,7 @@ const Signup = () => {
             return;
         }
         
-        fetch("http://localhost:8000/signup",{
+        fetch("https://moviesbackend-sezi.onrender.com/signup",{
             method:"POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newUser)
@@ -54,7 +54,7 @@ const Signup = () => {
             className='text-center'
       >
       <form onSubmit={handleSubmit}
-      className='text-center border w-80 flex justify-center items-center flex-col p-5 m-5 gap-2 bg-slate-300 rounded-2xl shadow-violet-400/100 ...'
+      className='text-center border w-80 flex justify-center items-center flex-col p-5 m-10 gap-2 bg-slate-300 rounded-2xl shadow-lg shadow-violet-400/100 ...'
       >
         <h1 className='text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 py-2 px-14 m-2 rounded' >SignUp Form </h1>
        <input type="text" name="name" value={user.name} onChange={handleChange} placeholder='Enter Your Name' className='text-center p-1'/>
