@@ -47,7 +47,7 @@ useEffect(()=>{
     <h2 className="text-white text-center">Loading...</h2>
 </div>
 ):( <div className='grid  lg:grid-cols-4 md:grid-cols-3
-    grid-cols-2 gap-2 p-5 '>
+    grid-cols-2 sm:gap-0  gap-2 p-5  '>
       
      {data?.map((elm,i)=><Card elm={elm} i={i} key={i}/>)}
     </div>)}
