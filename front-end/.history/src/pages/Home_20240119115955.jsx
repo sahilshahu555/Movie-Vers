@@ -7,7 +7,7 @@ import { MyContext } from '../components/AuthContextProvider';
 
 const Home = () => {
     const [data1, setData1] = useState([]);
-   const{data,setData}=useContext(MyContext)
+   // const{data,setData}=useContext(MyContext)
     const [load, setLoad] = useState(false);
 
    
@@ -49,7 +49,7 @@ useEffect(()=>{
 ):( <div className='grid  lg:grid-cols-4 md:grid-cols-3
     grid-cols-2 sm:gap-0  gap-2 p-5  '>
       
-     {data?.map((elm,i)=><Card elm={elm} i={i} key={i}/>)}
+     {/* {data?.map((elm,i)=><Card elm={elm} i={i} key={i}/>)} */}
     </div>)}
    
     </>

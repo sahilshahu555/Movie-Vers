@@ -7,7 +7,7 @@ import { MyContext } from '../components/AuthContextProvider';
 
 const Home = () => {
     const [data1, setData1] = useState([]);
-   const{data,setData}=useContext(MyContext)
+   // const{data,setData}=useContext(MyContext)
     const [load, setLoad] = useState(false);
 
    
